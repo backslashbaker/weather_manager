@@ -1,25 +1,20 @@
-import { Numbers } from '../src/numbers';
+import { Weather } from '../src/weather';
 
-describe('numbers', () => {
+describe('Weather', () => {
 
-  const numbers = new Numbers();
+  const weather = new Weather();
 
-  describe('addToNumber', () => {
-    it('adds two numbers together', () => {
-      expect(numbers.addToNumber(1, 2)).toEqual(3);
+  describe('Conversion', () => {
+    it('converts from Kelvin to Celcius', () => {
+      expect(weather.convert(273.15)).toEqual('0.0');
     });
 
-
-    it('adds two numbers that are the same', () => {
-      // Why is this failing?
-      expect(numbers.addToNumber(1, 1)).toEqual(3);
+    it('converts positive temperatures', () => {
+      expect(weather.convert(303.15)).toEqual('30.0');
     });
-  });
-
-  describe('test map', () => {
-    it('can map over an array', () => {
-      const list = [1, 2, 3, 4, 5];
-      expect(numbers.addOneToAll(list)).toEqual([2, 3, 4, 5, 6]);
+  
+    it('converts negative temperatures', () => {
+      expect(weather.convert(253.15)).toEqual('-20.0');
     });
   });
-});
+})
