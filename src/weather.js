@@ -13,6 +13,7 @@ export class Weather {
   //return tempInKelvin
   this.celsius = this.convert(tempInKelvin)
   // console.log("CELSIUS", this.celsius)
+
   return  this.celsius;
 
 

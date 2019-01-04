@@ -8,3 +8,4 @@ async function temperature() {
 }
 
 temperature();
+
