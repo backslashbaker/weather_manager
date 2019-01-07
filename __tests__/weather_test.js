@@ -16,5 +16,6 @@ describe('Weather', () => {
     it('converts negative temperatures', () => {
       expect(weather.convert(253.15)).toEqual('-20.0');
     });
+
   });
 })
