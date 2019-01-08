@@ -28,8 +28,14 @@ convertDate(unix) {
   }
 
   return `${year}-${month}-${day}`
+}
 
+async londonWeather5Days(){
+  const url = 'https://api.openweathermap.org/data/2.5/forecast?q=London,UK&units=metric'
+  const response = await fetch(url + '&appid=' + process.env.API_KEY);
+  const londonData = await response.json();
 
+  return londonData
 }
 
 };
