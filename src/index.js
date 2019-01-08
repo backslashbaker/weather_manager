@@ -1,19 +1,15 @@
 import {Weather} from './weather.js'
 const weather = new Weather();
 
-async function temperature() {
+async function oneDayLondon() {
 	const temp = document.getElementById('temp');
-	temp.innerHTML = await weather.apiCall() + '&deg;C';
-	return temp;
-}
+	const description = document.getElementById('description');
+	const allLondonWeather = await weather.londonWeather();
 
-async function description() {
-	const describe = document.getElementById('description');
-	describe.innerHTML = await weather.londonDescription()
-	
-	return describe;
+	temp.innerHTML = allLondonWeather[0] + '&deg;C';
+	description.innerHTML = allLondonWeather[1];
 
-}
+};
 
-temperature();
-description();
+oneDayLondon();
+
