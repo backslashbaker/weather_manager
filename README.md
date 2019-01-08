@@ -2,7 +2,7 @@
 
 ##Core Tasks
 
-- Familiarise yourself with the concept of an external API
+[x]Familiarise yourself with the concept of an external API
 - Familiarise yourself with synchronicity/asynchronicity in JavaScript 
 - Familiarise yourself with Fetch https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
 - Get London's weather to display on a website using Open Weather Map https://openweathermap.org/api
