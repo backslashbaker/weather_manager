@@ -4,29 +4,14 @@ const fetch = require('node-fetch');
 export class Weather {
   // Exporting is important, otherwise our tests or index filel won't have access to it
 
+  async londonWeather() {
+    const response = await fetch('https://api.openweathermap.org/data/2.5/find?q=London,UK&units=metric'+ '&appid='+process.env.API_KEY)
+    const json = await response.json();
+    const temperature = json.list[0].main.temp;
+    const weatherDescription = json.list[0].weather[0].description;
+    const allLondonData = [temperature, weatherDescription];
 
+    return allLondonData;
+  };
 
- async apiCall() {
-  const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=London'+ '&appid='+process.env.API_KEY)
-  const json = await response.json();
-  const tempInKelvin = json.main.temp;
-  this.celsius = this.convert(tempInKelvin);
-
-  return  this.celsius;
-
-}
-
-async londonDescription() {
-  const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=London'+ '&appid='+process.env.API_KEY)
-  const json = await response.json();
-  const weatherDescription = json.weather[0].description;
-console.log(weatherDescription);
-  return weatherDescription;
-}
-
-
-convert(temp) {
-    let converted = temp - 273.15;
-    return converted.toFixed(1);
-  }
-}
+};
