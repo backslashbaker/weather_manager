@@ -49,5 +49,24 @@ getDates(){
   return dateTime
 }
 
+async getforecast(){
+  const data = await this.londonWeather5Days();
+  const dates = this.getDates();
+  const midnight = []
+
+  data.list.forEach((x) => {
+    if (dates[0] === x.dt_txt) {
+      midnight.push(x.main.temp);
+      midnight.push(x.weather[0].description);
+    } else {
+      return "error cannot find data"
+    }
+  });
+
+  return midnight;
+};
+
+
+
 };
 
