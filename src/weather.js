@@ -23,6 +23,7 @@ async londonWeather5Days(){
 }
 
 getDates(){
+  const times = ['00:00:00', '06:00:00', '12:00:00', '18:00:00']
   const oneDay = 1000 * 60 * 60 * 24;
   const today = new Date();
   const todayPlus1 = new Date(today.getTime() + (oneDay));
@@ -30,7 +31,7 @@ getDates(){
   const todayPlus3 = new Date(today.getTime() + (oneDay * 3));
   const todayPlus4 = new Date(today.getTime() + (oneDay * 4));
 
-  const nextFiveDays = [today, todayPlus1, todayPlus2, todayPlus3, todayPlus4];
+  const nextFiveDays = [todayPlus1, todayPlus2, todayPlus3, todayPlus4];
   let dateStrings = [];
 
   nextFiveDays.forEach(function(date) {
@@ -38,7 +39,14 @@ getDates(){
    dateStrings.push(dateToString.substring(1,11))
   });
 
-  return dateStrings
+  let dateTime = []
+  dateStrings.forEach((date) => {
+    times.forEach((time) => {
+      dateTime.push(date + ' ' + time)
+    })
+  })
+
+  return dateTime
 }
 
 };

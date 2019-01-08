@@ -20,9 +20,9 @@ describe('Weather', () => {
     expect(londonWeather5Days.cnt).toEqual(40);
   });
 
-  it('returns an array of 5 dates as strings in an array',  async () => {
+  it('returns an array of 16 dates as strings in an array',  async () => {
     console.log(weather.getDates())
-   expect(weather.getDates().length).toEqual(5);
+   expect(weather.getDates().length).toEqual(16);
  });
 
 
