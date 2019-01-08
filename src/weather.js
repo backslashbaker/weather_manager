@@ -14,9 +14,18 @@ export class Weather {
 
   return  this.celsius;
 
-
 }
-  convert(temp) {
+
+async londonDescription() {
+  const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=London'+ '&appid='+process.env.API_KEY)
+  const json = await response.json();
+  const weatherDescription = json.weather[0].description;
+console.log(weatherDescription);
+  return weatherDescription;
+}
+
+
+convert(temp) {
     let converted = temp - 273.15;
     return converted.toFixed(1);
   }
