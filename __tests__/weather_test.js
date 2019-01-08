@@ -21,9 +21,14 @@ describe('Weather', () => {
   });
 
   it('returns an array of 16 dates as strings in an array',  async () => {
-    console.log(weather.getDates())
+    
    expect(weather.getDates().length).toEqual(16);
  });
+
+  it('returns the temperature and the description of a selected date and time', async () => {
+    const data = await weather.getforecast();
+    expect(typeof data[0]).toEqual('number');
+  });
 
 
 });
