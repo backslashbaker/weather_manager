@@ -5,23 +5,19 @@ describe('Weather', () => {
 
   const weather = new Weather();
 
-  // describe('Conversion', () => {
-  //   it('converts from Kelvin to Celcius', () => {
-  //     expect(weather.convert(273.15)).toEqual('0.0');
-  //   });
-
-  //   it('converts positive temperatures', () => {
-  //     expect(weather.convert(303.15)).toEqual('30.0');
-  //   });
-  
-  //   it('converts negative temperatures', () => {
-  //     expect(weather.convert(253.15)).toEqual('-20.0');
-  //   });
-
-    it('can access the weather API for London', async () => {
+    it('can access the weather API for London temperature', async () => {
        const data = await weather.londonWeather();
-      expect(data).toEqual([8.33, "scattered clouds"]);
+      expect(typeof data[0]).toEqual('number');
     });
 
-  });
+    it('can access the weather API for London weather description', async () => {
+      const data = await weather.londonWeather();
+     expect(typeof data[1]).toEqual('string');
+   });
+
+   it('converts unix time, and formats it as a string', () => {
+     expect(weather.convertDate(1546970400)).toEqual('2019-01-08');
+   });
+
+});
 
