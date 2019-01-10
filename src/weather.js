@@ -65,7 +65,8 @@ async getforecast(){
             date: moment(apiDate[0]).format('dddd'),
             time: apiDate[1],
             temp: apiData.main.temp,
-            description: apiData.weather[0].description});
+            description: apiData.weather[0].description,
+          icon: apiData.weather[0].icon});
         };
       });
     });
