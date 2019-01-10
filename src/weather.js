@@ -1,6 +1,6 @@
 require('dotenv').config()
 const fetch = require('node-fetch');
-
+var moment = require('moment');
 export class Weather {
   // Exporting is important, otherwise our tests or index filel won't have access to it
 
@@ -52,19 +52,27 @@ getDates(){
 async getforecast(){
   const data = await this.londonWeather5Days();
   const dates = this.getDates();
-  const midnight = []
+  const dataList = data.list;
+  const result = []
 
-  data.list.forEach((x) => {
-    if (dates[0] === x.dt_txt) {
-      midnight.push(x.main.temp);
-      midnight.push(x.weather[0].description);
-    } else {
-      return "error cannot find data"
-    }
-  });
 
-  return midnight;
+  dataList.forEach((apiData) => {
+    dates.forEach((dateTimes) => {
+        if (dateTimes === apiData.dt_txt) {
+          let apiDate = apiData.dt_txt.split(" ");
+          result.push({
+            date: moment(apiDate[0]).format('dddd'),
+            time: apiDate[1].slice(0, 5),
+            temp: apiData.main.temp,
+            description: apiData.weather[0].description,
+          icon: apiData.weather[0].icon});
+        };
+      });
+    });
+  console.log(result);
+  return result;
 };
+
 
 
 
