@@ -54,8 +54,7 @@ async getforecast(){
   const dates = this.getDates();
   const dataList = data.list;
   const result = []
-  
-  
+
 
   dataList.forEach((apiData) => {
     dates.forEach((dateTimes) => {
@@ -63,7 +62,7 @@ async getforecast(){
           let apiDate = apiData.dt_txt.split(" ");
           result.push({
             date: moment(apiDate[0]).format('dddd'),
-            time: apiDate[1],
+            time: apiDate[1].slice(0, 5),
             temp: apiData.main.temp,
             description: apiData.weather[0].description,
           icon: apiData.weather[0].icon});
