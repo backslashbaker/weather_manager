@@ -9,7 +9,8 @@ export class Weather {
     const json = await response.json();
     const temperature = json.list[0].main.temp;
     const weatherDescription = json.list[0].weather[0].description;
-    const allLondonData = [temperature, weatherDescription];
+    const icon = json.list[0].weather[0].icon
+    const allLondonData = {icon: icon, temperature: temperature, weatherDescription: weatherDescription};
 
     return allLondonData;
   };
@@ -69,7 +70,7 @@ async getforecast(){
         };
       });
     });
-  console.log(result);
+  
   return result;
 };
 
