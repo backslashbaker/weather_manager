@@ -5,10 +5,16 @@ async function oneDayLondon() {
 	const temp = document.getElementById('temp');
 	const description = document.getElementById('description');
 	const allLondonWeather = await weather.londonWeather();
+	const londonIconDiv = document.getElementById('london-icon');
+	let londonIcon = document.createElement("img");
 
-	temp.innerHTML = allLondonWeather[0] + '&deg;';
-	description.innerHTML = allLondonWeather[1];
+	
 
+	temp.innerHTML = allLondonWeather.temperature + '&deg;';
+	description.innerHTML = allLondonWeather.weatherDescription;
+	londonIcon.src = `http://openweathermap.org/img/w/${allLondonWeather.icon}.png`
+	londonIconDiv.appendChild(londonIcon)
+	console.log("londonicon", londonIcon.src)
 };
 
 
@@ -22,7 +28,7 @@ async function displayForecast() {
     info.classList.add("entry")
 
     let icon = document.createElement("img")
-    icon.src = `http://openweathermap.org/img/w/${obj.icon}.png`
+		icon.src = `http://openweathermap.org/img/w/${obj.icon}.png`
     info.appendChild(icon)
 
     let date = document.createElement("p")
@@ -34,7 +40,7 @@ async function displayForecast() {
     info.appendChild(time);
 
     let temp = document.createElement("p")
-    temp.innerHTML = obj.temp
+    temp.innerHTML = obj.temp + '&deg;'
     info.appendChild(temp);
 
     let desc = document.createElement("p")
