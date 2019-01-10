@@ -69,7 +69,7 @@ async getforecast(){
         };
       });
     });
-  console.log(result);
+  
   return result;
 };
 
