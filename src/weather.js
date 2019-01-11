@@ -1,6 +1,6 @@
 require('dotenv').config()
 const fetch = require('node-fetch');
-var moment = require('moment');
+const moment = require('moment');
 export class Weather {
   // Exporting is important, otherwise our tests or index filel won't have access to it
 
