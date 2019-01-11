@@ -7,12 +7,12 @@ describe('Weather', () => {
 
     it('can access the weather API for London temperature', async () => {
        const data = await weather.londonWeather();
-      expect(typeof data[0]).toEqual('number');
+      expect(typeof data.temperature).toEqual('number');
     });
 
     it('can access the weather API for London weather description', async () => {
       const data = await weather.londonWeather();
-     expect(typeof data[1]).toEqual('string');
+     expect(typeof data.weatherDescription).toEqual('string');
    });
 
    it('gets 5 day data and returns the value of "cnt"',  async () => {
@@ -25,10 +25,10 @@ describe('Weather', () => {
    expect(weather.getDates().length).toEqual(16);
  });
 
-  // it('returns the temperature and the description of a selected date and time', async () => {
-  //   const data = await weather.getforecast();
-  //   expect(typeof data[0]).toEqual('number');
-  // });
+  it('returns the temperature and the description of a selected date and time', async () => {
+    const data = await weather.getforecast();
+    expect(typeof data).toEqual('object');
+  });
 
 
 
