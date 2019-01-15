@@ -6,16 +6,16 @@ const apiCall = new Api();
 export class Weather {
   // Exporting is important, otherwise our tests or index filel won't have access to it
 
-  async londonWeather() {
-    const response = await fetch('https://api.openweathermap.org/data/2.5/find?q=London,UK&units=metric'+ '&appid='+process.env.API_KEY)
-    const json = await response.json();
-    const temperature = json.list[0].main.temp;
-    const weatherDescription = json.list[0].weather[0].description;
-    const icon = json.list[0].weather[0].icon
-    const allLondonData = {icon: icon, temperature: temperature, weatherDescription: weatherDescription};
+  // async londonWeather() {
+  //   const response = await fetch('https://api.openweathermap.org/data/2.5/find?q=London,UK&units=metric'+ '&appid='+process.env.API_KEY)
+  //   const json = await response.json();
+  //   const temperature = json.list[0].main.temp;
+  //   const weatherDescription = json.list[0].weather[0].description;
+  //   const icon = json.list[0].weather[0].icon
+  //   const allLondonData = {icon: icon, temperature: temperature, weatherDescription: weatherDescription};
 
-    return allLondonData;
-  };
+  //   return allLondonData;
+  // };
 
 // async londonWeather5Days(){
 //   const url = 'https://api.openweathermap.org/data/2.5/forecast?q=London,UK&units=metric'
