@@ -1,27 +1,11 @@
 require('dotenv').config()
 const fetch = require('node-fetch');
 const moment = require('moment');
+import { Api } from '../src/api';
+const apiCall = new Api();
 export class Weather {
   // Exporting is important, otherwise our tests or index filel won't have access to it
 
-  async londonWeather() {
-    const response = await fetch('https://api.openweathermap.org/data/2.5/find?q=London,UK&units=metric'+ '&appid='+process.env.API_KEY)
-    const json = await response.json();
-    const temperature = json.list[0].main.temp;
-    const weatherDescription = json.list[0].weather[0].description;
-    const icon = json.list[0].weather[0].icon
-    const allLondonData = {icon: icon, temperature: temperature, weatherDescription: weatherDescription};
-
-    return allLondonData;
-  };
-
-async londonWeather5Days(){
-  const url = 'https://api.openweathermap.org/data/2.5/forecast?q=London,UK&units=metric'
-  const response = await fetch(url + '&appid=' + process.env.API_KEY);
-  const londonData = await response.json();
-
-  return londonData
-}
 
 getDates(){
   const times = ['00:00:00', '06:00:00', '12:00:00', '18:00:00']
@@ -51,7 +35,7 @@ getDates(){
 }
 
 async getforecast(){
-  const data = await this.londonWeather5Days();
+  const data = await apiCall.londonForecast();
   const dates = this.getDates();
   const dataList = data.list;
   const result = []
