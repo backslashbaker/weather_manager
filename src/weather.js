@@ -6,7 +6,13 @@ import { Api } from '../src/api';
 export class Weather {
   // Exporting is important, otherwise our tests or index filel won't have access to it
   constructor() {
-     this.apiCall = new Api();
+    this.apiCall = new Api();
+  };
+
+  async currentWeather() {
+    const data = await this.apiCall.londonWeather();
+
+    return data;
   }
 
 getDates(){
@@ -22,8 +28,8 @@ getDates(){
   let dateStrings = [];
 
   nextFiveDays.forEach(function(date) {
-   const dateToString = JSON.stringify(date)
-   dateStrings.push(dateToString.substring(1,11))
+    const dateToString = JSON.stringify(date)
+    dateStrings.push(dateToString.substring(1,11))
   });
 
   let dateTime = []
@@ -37,7 +43,7 @@ getDates(){
 }
 
 async getforecast(){
-  const data = await apiCall.londonForecast();
+  const data = await this.apiCall.londonForecast();
   const dates = this.getDates();
   const dataList = data.list;
   const result = []

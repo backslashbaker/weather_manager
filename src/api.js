@@ -17,7 +17,8 @@ export class Api {
 	}
 
 	async londonWeather() {
-    const response = await fetch('https://api.openweathermap.org/data/2.5/find?q=London,UK&units=metric'+ '&appid='+process.env.API_KEY)
+		const link = 'https://api.openweathermap.org/data/2.5/find?q=London,UK&units=metric'
+    const response = await fetch(link + '&appid='+process.env.API_KEY)
     const json = await response.json();
     const temperature = json.list[0].main.temp;
     const weatherDescription = json.list[0].weather[0].description;
