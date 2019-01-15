@@ -1,7 +1,12 @@
 const fetch = require('node-fetch');
 import { Weather } from '../src/weather';
+import { Api } from '../src/api';
+jest.mock('../src/api');
 
 describe('Weather', () => {
+  beforeEach(() => {
+    Api.mockClear();
+  })
 
   let weather = new Weather();
 
