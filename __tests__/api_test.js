@@ -9,4 +9,9 @@ describe('Api', () => {
 	expect(londonForecast.cnt).toEqual(40);
 	});
 
+	it('returns the temperature and the description of a selected date and time', async () => {
+    const data = await weather.getforecast();
+    expect(typeof data).toEqual('object');
+  });
+
 });
