@@ -3,22 +3,11 @@ import { Weather } from '../src/weather';
 
 describe('Weather', () => {
 
-  const weather = new Weather();
+  let weather = new Weather();
 
-    it('can access the weather API for London temperature', async () => {
-       const data = await weather.londonWeather();
-      expect(typeof data.temperature).toEqual('number');
-    });
-
-    it('can access the weather API for London weather description', async () => {
-      const data = await weather.londonWeather();
-     expect(typeof data.weatherDescription).toEqual('string');
-   });
-
-   it('gets 5 day data and returns the value of "cnt"',  async () => {
-     const londonWeather5Days = await weather.londonWeather5Days();
-    expect(londonWeather5Days.cnt).toEqual(40);
-  });
+  it('creates an instance of weather class', () => {
+    expect(weather instanceof Weather).toEqual(true);
+  })
 
   it('returns an array of 16 dates as strings in an array',  async () => {
     console.log(weather.getforecast())
@@ -29,8 +18,5 @@ describe('Weather', () => {
     const data = await weather.getforecast();
     expect(typeof data).toEqual('object');
   });
-
-
-
 
 });
