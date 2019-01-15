@@ -15,13 +15,13 @@ export class Weather {
     return allLondonData;
   };
 
-async londonWeather5Days(){
-  const url = 'https://api.openweathermap.org/data/2.5/forecast?q=London,UK&units=metric'
-  const response = await fetch(url + '&appid=' + process.env.API_KEY);
-  const londonData = await response.json();
+// async londonWeather5Days(){
+//   const url = 'https://api.openweathermap.org/data/2.5/forecast?q=London,UK&units=metric'
+//   const response = await fetch(url + '&appid=' + process.env.API_KEY);
+//   const londonData = await response.json();
 
-  return londonData
-}
+//   return londonData
+// }
 
 getDates(){
   const times = ['00:00:00', '06:00:00', '12:00:00', '18:00:00']
