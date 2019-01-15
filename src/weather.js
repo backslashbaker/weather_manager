@@ -2,10 +2,12 @@ require('dotenv').config()
 const fetch = require('node-fetch');
 const moment = require('moment');
 import { Api } from '../src/api';
-const apiCall = new Api();
+
 export class Weather {
   // Exporting is important, otherwise our tests or index filel won't have access to it
-
+  constructor() {
+     this.apiCall = new Api();
+  }
 
 getDates(){
   const times = ['00:00:00', '06:00:00', '12:00:00', '18:00:00']
