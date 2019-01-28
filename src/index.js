@@ -4,7 +4,7 @@ const weather = new Weather();
 async function oneDayLondon() {
 	const temp = document.getElementById('temp');
 	const description = document.getElementById('description');
-	const allLondonWeather = await weather.londonWeather();
+	const allLondonWeather = await weather.currentWeather();
 	const londonIconDiv = document.getElementById('london-icon');
 	let londonIcon = document.createElement("img");
 
