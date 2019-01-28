@@ -13,7 +13,7 @@ app.get('*', (req, res) => {
 });
 
 if (process.env.NODE_ENV !== 'production') {
-	require('dotenv').config()
+	require('dotenv').config();
 }
 
 app.listen(port);
